@@ -35,81 +35,77 @@ const TYPES = [
   "露",
 ];
 const SUPS = ["⓪", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨"];
-const SUPPLES = ["類", "対", "関", "慣用", "同音", "▲"];
+const SUPPLES = ["類", "対", "関", "同音", "慣用", "▲"];
 
+let sups = [
+  SUPS[0],
+  // SUPS[1],
+].join(""); // SUP
 let types = [
-  // TYPES[0],
   TYPES[15],
   // TYPES[16],
-].join("·");
-let sups = [
-  SUPS[3],
-  // SUPS[1],
-].join("");
-let hz = "潰れる"; // 漢字
-let pjm = "つぶれる"; // 平仮名
+].join("·"); // 类型
+let hz = "憧れる"; // 漢字
+let pjm = "あこがれる"; // 平仮名
 let ys = [
-  "压坏,挤破",
-  "倒塌",
-  "倒闭,破产",
-  "泡汤,落空",
-  "失去作用",
-].join(";"); // 意思
-if(ys.startsWith("(")) ys += ' ';
+  "憧憬,向往",
+]; 
+// ].join(";"); // 意思
 let lj = [
-  "柿が潰れた。",
-  "銀行が潰れた。",
+  "都会の生活に憧れる。",
+  "アイドルに憧れる。",
 ]; // 例句
 let fy = [
-  "柿子被挤破了。",
-  "银行倒闭。",
-  "朴素的打扮",
+  "憧憬都市生活。",
+  "向往成为偶像。",
+  "外出,不在家。",
 ]; // 翻译
 let supple = [
-  SUPPLES[2],
-  SUPPLES[3],
+  // SUPPLES[3],
+  // SUPPLES[2],
   // "",
 ];// 补充
 // ].join(""); 
 let sphz = [
-  "潰す",
-  // "直ちに",
+  "明ける",
+  "開ける",
+  // "補助",
 ];
 let sppjm = [
-  "つぶす",
-  // "ただちに",
+  "あける",
+  "あける",
 ];
 let spsups = [
   [
-    SUPS[2],
+    SUPS[0],
   ],
   [
-    // SUPS[1],
+    SUPS[0],
   ]
 ];
 let sptypes = [
   [
-    TYPES[11],
+    TYPES[15],
+    // TYPES[16],
   ],
   [
-    // TYPES[1],
+    TYPES[12],
+    // TYPES[16],
   ]
 ];
 let spfy = [
   [
-    "压扁,弄碎",
-    "摧毁,使...破产",
-    "破坏",
-    "消磨,消遣",
+    "天明;过年;(某一期间)期满,到期",
+    // "意外地",
   ],
   [
-    "",
-    // "",
+    "打开;开办",
+    // "累计,积攒",
   ]
 ];
 
-let gylj = "面目が潰れる。";
-let gyfy = "颜面尽失。";
+let gylj = "呆れて物が言えない。";
+let gyfy = "惊讶得哑口无言。";
 
 let template = `---\n\n`;
 if (hz) {
@@ -123,23 +119,8 @@ lj.forEach((e, i) => {
   template += `▲ ${lj[i]}/${fy[i]}  \n`;
 });
 
-// if(supple) {
-//   template += `\`${supple}\` `;
-//   if(supple !== "慣用") {
-//     if (sphz) {
-//       template += `\`${sphz}\`(${sppjm})`;
-//     } else {
-//       template += `\`${sppjm}\``;
-//     }
-//     template += `${spsups}[${sptypes}]${spfy}  \n`;
-//   } else {
-//     template += `${gylj}/${gyfy}  \n`;
-//   }
-// }
-
 if(supple) {
   supple.forEach((s,i) => {
-    console.log('i=',i);
     template += `\`${s}\` `;
     if(s !== "慣用") {
       if (sphz[i]) {
@@ -156,5 +137,6 @@ if(supple) {
 
 
 fs.appendFile("JLPT.txt", `${template}\n`, (e) => e);
-fs.appendFile("00特别单元.md", `${template}\n`, (e) => e);
+// fs.appendFile("00特别单元.md", `${template}\n`, (e) => e);
+fs.appendFile("01第一单元.md", `${template}\n`, (e) => e);
 console.log(template);
